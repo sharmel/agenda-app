@@ -1,0 +1,45 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="header clearfix">
+                        <nav>
+                            <ul class="nav nav-pills pull-right">
+                                <li role="presentation" class="active"><a href="#">Home</a></li>
+                                <li role="presentation"><a href="#">About</a></li>
+                                <li role="presentation"><a href="#">Contact</a></li>
+                                <li role="presentation"><a href="@controllers.auth.routes.User.logout()">Logout</a> </li>
+                                <li role="presentation"><a href="@controllers.auth.routes.User.signup()">Sign Up</a></li>
+                                @* @if(session.get("email")){
+                                    <li role="presentation"><a href="@controllers.auth.routes.User.logout()">Logout</a></li>
+                                }*@
+
+                            </ul>
+                        </nav>
+                        <h3 class="text-muted">Agenda App</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        @content
+
+        <script type="text/javascript" src="@routes.Assets.at("javascripts/jquery.min.js")" ></script>
+        <script type="text/javascript" src="@routes.Assets.at("javascripts/bootstrap.min.js")" ></script>
+    </body>
+</html>

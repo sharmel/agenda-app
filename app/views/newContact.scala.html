@@ -1,0 +1,31 @@
+@(contactForm : Form[Contact])
+    @* @(contactForm : controllers.Agenda)*@
+
+@import helper._
+
+@implicitField = @{ FieldConstructor(views.html.bootstrapInput.f) }
+
+@main("New contact"){
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+            @form(routes.Agenda.createContact()){
+                @* @for(error <- contactForm("name").errors) {
+                <p>@error.message</p>
+                }*@
+                @CSRF.formField
+                @inputText(contactForm("name"))
+                @inputText(contactForm("email"))
+                @inputText(contactForm("phone"))
+                <input type="submit" class="btn btn-primary" value="Submit">
+                }
+            </div>
+
+            <div class="col-md-4">
+
+            </div>
+        </div>
+    </div>
+
+}

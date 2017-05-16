@@ -1,0 +1,12 @@
+@(elements: helper.FieldElements)@*use to get the elements (label,input etc)*@
+@*structure of a bootstrap field*@
+
+<div class="control-group @if(elements.hasErrors){error}">
+  <label class="control-label" for="@elements.id">@elements.label</label>
+  <div class="controls">
+    @elements.input
+
+    <span class="help-inline"> @elements.errors(elements.lang).mkString(", ")</span>@*With comma between the errors*@
+    @*<span class="help-block"> @elements.infos(elements.lang).mkString(", ")</span>*@
+  </div>
+</div>

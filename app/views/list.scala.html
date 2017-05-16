@@ -1,0 +1,32 @@
+@(contacts : List[Contact])
+@import play.i18n._
+@main("List of contacts"){
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>@Messages.get("name")</td>
+                    @*<td>@Messages("name")</td> Use this without the i18n import*@
+                    <td>@Messages.get("email")</td>
+                    @*<td>@Messages("email")</td>*@
+                    <td>@Messages.get("phone")</td>
+                    <td>@Messages.get("more")</td>
+
+                </tr>
+            </thead>
+            <tbody>
+            @for(contact <- contacts){
+                <tr>
+                    <td>@contact.name</td>
+                    <td>@contact.email</td>
+                    <td>@contact.phone</td>
+                    <td><a href="@routes.Agenda.show(contact.id)">More</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        <a href="@routes.Agenda.newContact()">Create new contact</a>
+    </div>
+
+}
