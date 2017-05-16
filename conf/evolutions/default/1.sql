@@ -4,7 +4,7 @@
 # --- !Ups
 
 create table contact (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   name                      varchar(255),
   phone                     varchar(255),
   email                     varchar(255),
@@ -12,7 +12,7 @@ create table contact (
 ;
 
 create table user (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   email                     varchar(255),
   username                  varchar(255),
   password                  varchar(255),
@@ -20,16 +20,24 @@ create table user (
   constraint pk_user primary key (id))
 ;
 
+create sequence contact_seq;
+
+create sequence user_seq;
+
 
 
 
 # --- !Downs
 
-SET FOREIGN_KEY_CHECKS=0;
+SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table contact;
+drop table if exists contact;
 
-drop table user;
+drop table if exists user;
 
-SET FOREIGN_KEY_CHECKS=1;
+SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists contact_seq;
+
+drop sequence if exists user_seq;
 
